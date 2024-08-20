@@ -23,7 +23,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.8.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.ELEVENTY_TOKEN }}
           #publish_dir is the folder in which eleventy builds the pages to.
           #it is not the docs folder in the repository
           publish_dir: ./learn_french_in_45_days/_site
