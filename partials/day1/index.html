@@ -532,7 +532,7 @@
             }
 
             // Fetch the JSON data and initialize pagination
-            fetch('/french_in_45_days/partials/day_1_data.json') // you have to reference the file starting from the source_directory
+            fetch('day_1_data.json') // this is placed in the _includes folder
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
