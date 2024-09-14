@@ -453,9 +453,10 @@
 
                   
 
-
    <div class="container mt-4">
-        <h2>Learn French in 45 days day 1</h2>
+
+        <h2 id="page-heading" >Learn French in 45 days</h2>
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -479,6 +480,21 @@
             const rowsPerPage = 10;
             let currentPage = 1;
             let data = [];
+
+            // EDIT HERE ONLY
+            //---------------
+
+            const dataUrl = '/french_in_45_days/_includes/data/day_2_data.json';
+            // the json data is placed in the _includes/data directory .. you can upload to git-pages separately
+            
+            const headingText = 'Learn French in 45 days - day 2';
+
+            //---------------
+
+            // Set the heading text
+            document.getElementById('page-heading').textContent = headingText;
+
+
 
             // Function to display rows based on current page
             function displayPage(page) {
@@ -533,7 +549,7 @@
             }
 
             // Fetch the JSON data and initialize pagination
-            fetch('/day1/day_1.json') // Update the path to your JSON file if necessary
+            fetch(dataUrl) // this is placed in the _includes/data directory .. you can upload to git-pages separately
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -547,6 +563,7 @@
                 .catch(error => console.error('There was a problem with the fetch operation:', error));
         });
 </script>
+
 
 
 
