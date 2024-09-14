@@ -532,7 +532,7 @@
             }
 
             // Fetch the JSON data and initialize pagination
-            fetch('day_1_data.json') // this works perfectly since day_1_data.json is in the same directory as the day1.njk
+            fetch('/french_in_45_days/partials/day_1_data.json') // you have to reference the file starting from the source_directory
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
