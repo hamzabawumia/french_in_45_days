@@ -532,7 +532,7 @@
             }
 
             // Fetch the JSON data and initialize pagination
-            fetch('day_1_data.json') // this is placed in the _includes folder
+            fetch('/data/day_1_data.json') // this is placed in the _sites/data directory .. you should upload to git-pages separtely
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -585,10 +585,10 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="/_includes/bootstrap4_components/plugins/jquery/jquery.min.js"></script>
+<script src="/french_in_45_days/_includes/bootstrap4_components/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/_includes/bootstrap4_components/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/french_in_45_days/_includes/bootstrap4_components/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/_includes/bootstrap4_components/dist/js/adminlte.min.js"></script>
+<script src="/french_in_45_days/_includes/bootstrap4_components/dist/js/adminlte.min.js"></script>
 </body>
 </html>
