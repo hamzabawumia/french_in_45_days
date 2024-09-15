@@ -82,7 +82,7 @@
             }
 
             // Fetch the JSON data and initialize pagination
-            fetch('day_1_data.json') // this is placed in the _includes folder
+            fetch('/data/day_1_data.json') // this is placed in the _sites/data directory .. you should upload to git-pages separtely
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
