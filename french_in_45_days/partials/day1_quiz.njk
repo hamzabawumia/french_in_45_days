@@ -1,0 +1,196 @@
+
+{% extends "index.njk" %}
+
+{% block content %}
+
+   <div class="container mt-4">
+
+        <h2 id="page-heading" >Learn French in 45 days</h2>
+
+    <style>
+        .question-table {
+            display: none;
+        }
+        .question-table.active {
+            display: table;
+        }
+        .feedback {
+            color: red;
+        }
+        .submit-btn, #prev-btn, #next-btn {
+            margin: 10px;
+        }
+    </style>
+
+    <div id="quiz"></div>
+    <button id="prev-btn" onclick="showPreviousQuestion()">Previous</button>
+    <button id="next-btn" onclick="showNextQuestion()">Next</button>
+    <button class="submit-btn" onclick="submitAnswer()">Submit Answer</button>
+    <div id="feedback"></div>
+
+<script>
+let quizData = [];
+let currentQuestionIndex = 0;
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    // EDIT HERE ONLY
+    //---------------
+
+    const dataUrl = '/french_in_45_days/_includes/quiz_data/day_1_quiz_script.js';
+    // this calls a script that generates the formated quiz and returns it as json
+
+    const headingText = 'Learn French in 45 days - Quiz 1';
+
+    // Set the heading text
+    document.getElementById('page-heading').textContent = headingText;
+
+    //---------------
+
+
+
+    fetch(dataUrl)
+        .then(response => response.json())
+        .then(data => {
+
+            quizData = { "quizData": {{ quizData }} };
+
+            initializeQuiz();
+        })
+        .catch(error => console.error('Error loading quiz data:', error));
+});
+
+function initializeQuiz() {
+    const quizContainer = document.getElementById('quiz');
+    
+    quizData.forEach((data, index) => {
+        const questionTable = document.createElement('table');
+        questionTable.className = 'question-table';
+        if (index === 0) questionTable.classList.add('active'); // Show only the first question
+        
+        let tableHTML = `
+            <thead>
+                <tr>
+                    <th>English Word</th>
+                    <th>French Translation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">${data.question}</td>
+                </tr>
+        `;
+        
+        const allFrench = data.pairs.map(pair => pair.french);
+        
+        data.pairs.forEach(pair => {
+            tableHTML += `
+                <tr>
+                    <td>${pair.english}</td>
+                    <td>
+                        <select data-english="${pair.english}">
+                            <option value="">Select an answer</option>
+                            ${allFrench.map(french => `<option value="${french}">${french}</option>`).join('')}
+                        </select>
+                    </td>
+                </tr>
+            `;
+        });
+
+        tableHTML += `
+            <tr>
+                <td colspan="2" class="feedback" data-index="${index}"></td>
+            </tr>
+        </tbody>
+        `;
+
+        questionTable.innerHTML = tableHTML;
+        quizContainer.appendChild(questionTable);
+    });
+
+    updateNavigationButtons();
+}
+
+function showCurrentQuestion() {
+    const questions = document.querySelectorAll('.question-table');
+    questions.forEach((q, i) => {
+        q.classList.toggle('active', i === currentQuestionIndex);
+    });
+
+    updateNavigationButtons();
+}
+
+function showNextQuestion() {
+    if (currentQuestionIndex < quizData.length - 1) {
+        currentQuestionIndex++;
+        showCurrentQuestion();
+        resetSubmitButton();
+    }
+}
+
+function showPreviousQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showCurrentQuestion();
+        resetSubmitButton();
+    }
+}
+
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const questions = document.querySelectorAll('.question-table');
+
+    prevBtn.style.display = currentQuestionIndex === 0 ? 'none' : 'inline-block';
+    nextBtn.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'inline-block';
+
+    // Disable Next button until answer is submitted
+    nextBtn.disabled = !isAnswerSubmitted();
+}
+
+function isAnswerSubmitted() {
+    const selects = document.querySelectorAll(`.question-table:nth-of-type(${currentQuestionIndex + 1}) select`);
+    return Array.from(selects).every(select => select.value !== '');
+}
+
+function resetSubmitButton() {
+    document.querySelector('.submit-btn').disabled = false;
+    document.getElementById('feedback').innerHTML = '';
+}
+
+function submitAnswer() {
+    const activeQuestion = document.querySelector(`.question-table:nth-of-type(${currentQuestionIndex + 1})`);
+    const index = currentQuestionIndex;
+
+    // Get the user's answers and the correct answers
+    const selects = activeQuestion.querySelectorAll('select');
+    let feedback = '';
+
+    selects.forEach(select => {
+        const english = select.getAttribute('data-english');
+        const userAnswer = select.value.trim();
+        const correctAnswer = quizData[index].pairs.find(pair => pair.english === english).french;
+        const isCorrect = userAnswer === correctAnswer;
+
+        const feedbackDiv = activeQuestion.querySelector('.feedback');
+        if (isCorrect) {
+            select.style.borderColor = 'green';
+            feedbackDiv.innerHTML += `<p><strong>${english}:</strong> Correct!</p>`;
+        } else {
+            select.style.borderColor = 'red';
+            feedbackDiv.innerHTML += `<p><strong>${english}:</strong> Incorrect. Correct answer is: <strong>${correctAnswer}</strong></p>`;
+        }
+    });
+
+    // Disable the submit button after submission
+    document.querySelector('.submit-btn').disabled = true;
+    document.getElementById('feedback').innerHTML = '';
+    document.getElementById('next-btn').disabled = false; // Enable the Next button after submitting the answer
+}
+</script>
+
+
+{% endblock %}
+
+
+
