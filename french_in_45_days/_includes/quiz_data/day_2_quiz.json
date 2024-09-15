@@ -1,33 +1,64 @@
 [
-    {"english": "air", "french": "air, m"},
-    {"english": "airport", "french": "aéroport, m"},
-    {"english": "alarm clock", "french": "réveil-matin, m"},
-    {"english": "alcohol", "french": "alcool, m"},
-    {"english": "all", "french": "tous, toutes, tout"},
-    {"english": "allow", "french": "permettre, accorder"},
-    {"english": "all right", "french": "très bien"},
-    {"english": "almost", "french": "presque"},
-    {"english": "alone", "french": "seul, seule"},
-    {"english": "along", "french": "le long de"},
-    {"english": "alongside", "french": "le long de"},
-    {"english": "a lot of", "french": "un tas de..., beaucoup de..."},
-    {"english": "already", "french": "déjà"},
-    {"english": "also, too", "french": "aussi"},
-    {"english": "although", "french": "bien que"},
-    {"english": "always", "french": "toujours"},
-    {"english": "among", "french": "entre, parmi"},
-    {"english": "amount", "french": "quantité, montant, somme"},
-    {"english": "amuse", "french": "amuser"},
-    {"english": "amusing", "french": "plaisant, réjouissant, amusant"},
-    {"english": "and", "french": "et"},
-    {"english": "and so on", "french": "etc."},
-    {"english": "angry", "french": "fâché, fâchée"},
-    {"english": "animal", "french": "animal, m"},
-    {"english": "ankle", "french": "cheville, f"},
-    {"english": "another", "french": "un autre, une autre"},
-    {"english": "answer", "french": "réponse, f"},
-    {"english": "ant", "french": "fourmi, f"},
-    {"english": "appetite", "french": "appétit, m"},
-    {"english": "apple", "french": "pomme, f"},
-    {"english": "apricot", "french": "abricot, m"}
-]
+    {
+      "question": "Match the ENGLISH sentences, phrases, or words with their correct meanings in FRENCH",
+      "pairs": [
+        {"english": "air", "french": "air, m"},
+        {"english": "airport", "french": "aéroport, m"},
+        {"english": "alarm clock", "french": "réveil-matin, m"},
+        {"english": "alcohol", "french": "alcool, m"},
+        {"english": "all", "french": "tous, toutes, tout"}
+      ]
+    },
+    {
+      "question": "Match the ENGLISH sentences, phrases, or words with their correct meanings in FRENCH",
+      "pairs": [
+        {"english": "allow", "french": "permettre, accorder"},
+        {"english": "all right", "french": "très bien"},
+        {"english": "almost", "french": "presque"},
+        {"english": "alone", "french": "seul, seule"},
+        {"english": "along", "french": "le long de"}
+      ]
+    },
+    {
+      "question": "Match the ENGLISH sentences, phrases, or words with their correct meanings in FRENCH",
+      "pairs": [
+        {"english": "alongside", "french": "le long de"},
+        {"english": "a lot of", "french": "un tas de..., beaucoup de..."},
+        {"english": "already", "french": "déjà"},
+        {"english": "also, too", "french": "aussi"},
+        {"english": "although", "french": "bien que"}
+      ]
+    },
+    {
+      "question": "Match the ENGLISH sentences, phrases, or words with their correct meanings in FRENCH",
+      "pairs": [
+        {"english": "always", "french": "toujours"},
+        {"english": "among", "french": "entre, parmi"},
+        {"english": "amount", "french": "quantité, montant, somme"},
+        {"english": "amuse", "french": "amuser"},
+        {"english": "amusing", "french": "plaisant, réjouissant, amusant"}
+      ]
+    },
+    {
+      "question": "Match the ENGLISH sentences, phrases, or words with their correct meanings in FRENCH",
+      "pairs": [
+        {"english": "and", "french": "et"},
+        {"english": "and so on", "french": "etc."},
+        {"english": "angry", "french": "fâché, fâchée"},
+        {"english": "animal", "french": "animal, m"},
+        {"english": "ankle", "french": "cheville, f"}
+      ]
+    },
+    {
+      "question": "Match the ENGLISH sentences, phrases, or words with their correct meanings in FRENCH",
+      "pairs": [
+        {"english": "another", "french": "un autre, une autre"},
+        {"english": "answer", "french": "réponse, f"},
+        {"english": "ant", "french": "fourmi, f"},
+        {"english": "appetite", "french": "appétit, m"},
+        {"english": "apple", "french": "pomme, f"},
+        {"english": "apricot", "french": "abricot, m"}
+      ]
+    }
+  ]
+  
