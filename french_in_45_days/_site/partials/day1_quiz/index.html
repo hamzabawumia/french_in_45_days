@@ -494,7 +494,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // EDIT HERE ONLY
     //---------------
 
-    const dataUrl = '/french_in_45_days/_includes/quiz_data/day_1_quiz_script.js';
+    const dataUrl = '/french_in_45_days/_includes/quiz_data/day_1_quiz.json';
     // this calls a script that generates the formated quiz and returns it as json
 
     const headingText = 'Learn French in 45 days - Quiz 1';
@@ -510,7 +510,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
 
-            quizData = { "quizData":  };
+            quizData = data;
 
             initializeQuiz();
         })
